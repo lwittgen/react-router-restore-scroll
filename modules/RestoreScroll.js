@@ -21,6 +21,13 @@ const RestoreScroll = React.createClass({
     unregisterScroller(this.props.scrollKey)
   },
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.scrollKey !== nextProps.scrollKey) {
+      const { replaceScroller } = this.context.router.restoreScroll
+      replaceScroller(this.props.scrollKey, nextProps.scrollKey, findDOMNode(this));
+    }
+  },
+
   render() {
     return React.Children.only(this.props.children)
   }
