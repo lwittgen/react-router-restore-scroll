@@ -90,6 +90,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    unregisterScroller(this.props.scrollKey);
 	  },
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    if (this.props.scrollKey !== nextProps.scrollKey) {
+	      var replaceScroller = this.context.router.restoreScroll.replaceScroller;
+
+	      replaceScroller(this.props.scrollKey, nextProps.scrollKey, (0, _reactDom.findDOMNode)(this));
+	    }
+	  },
 	  render: function render() {
 	    return _react2.default.Children.only(this.props.children);
 	  }
