@@ -66,6 +66,8 @@ const useHistoryRestoreScroll = (createHistory) => (
     const replaceScroller = (prevScrollKey, scrollKey, node) => {
       delete scrollableNodes[prevScrollKey]
       scrollableNodes[scrollKey] = node
+      if (!positionsByLocation[currentScrollKey])
+        positionsByLocation[currentScrollKey] = {}
       savePosition(prevScrollKey, { scrollTop: 0, scrollLeft: 0 })
       restoreNode(scrollKey)
     }
